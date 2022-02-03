@@ -4,7 +4,7 @@ const TelegramStarted = require('node-telegram-bot-api')
 const token = process.env.TOKEN_BOT // релизный бот на сервере
 // const token = process.env.TESTING_TOKEN_BOT
 const fs = require('fs')
-global.bot = new TelegramStarted(token, { polling: true })
+const bot = new TelegramStarted(token, { polling: true })
 const request = require("request")
 const mongoose = require('mongoose');
 const MONGO_USERNAME = process.env.LOCAL_MONGO_USERNAME
@@ -38,7 +38,7 @@ myEmitter.addListener('/encrypt', ()=>{})
 myEmitter.addListener('/new_task', ()=>{})
 myEmitter.addListener('/save', ()=>{})
 myEmitter.addListener('new_task_from_project', ()=>{})
-global.USER = new Map()
+const USER = new Map()
 class Users_msg{
     constructor(chat_id, name_event){
         this.chat_id = chat_id;
@@ -62,7 +62,7 @@ myEmitter.on('/encrypt', async (msg)=>{
 myEmitter.on('/reencrypt', async msg =>{
     if(USER.get(msg.chat.id).map.num == 1){
         USER.get(msg.chat.id).map.text = msg.text.split('O') 
-       bot.sendMessage(msg.chat.id, 'Введите ключ')
+        bot.sendMessage(msg.chat.id, 'Введите ключ')
     }
     if(USER.get(msg.chat.id).map.num == 2){
         USER.get(msg.chat.id).map.number_text = msg.text
@@ -83,17 +83,17 @@ bot.on('callback_query', async (query)=>{
    })
 
 function name_as_id(name) {
-    if (name == 'Артем') return 1280484134
-    // if (name == 'Ренат') return 209057817
-    if (name == 'Илья') return 237077795
-    if (name == 'Антон') return 296427186
+    if (name == 'XXXX') return "XXXX"
+    if (name == 'XXXX') return "XXXX"
+    if (name == 'XXXX') return "XXXX"
+    if (name == 'XXXX') return "XXXX"
 }
 
 function id_as_name(name) {
-    if (name == '1280484134') return `Артем`
-    if (name == '209057817') return `Ренат`
-    if (name == '237077795') return `Илья`
-    if (name == '296427186') return `Антон` 
+    if (name == 'XXXX') return `XXXX`
+    if (name == 'XXXX') return `XXXX`
+    if (name == 'XXXX') return `XXXX`
+    if (name == 'XXXX') return `XXXX` 
 }
 
 
